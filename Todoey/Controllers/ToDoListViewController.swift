@@ -21,7 +21,8 @@ class ToDoListViewController: UITableViewController {
     // print(dataFilePath)
     
     // CoreData
-    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+    // let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+    let context = CoreDataDeclaration.persistentContainer.viewContext
     
     var selectedCategory : Category? {
         didSet{

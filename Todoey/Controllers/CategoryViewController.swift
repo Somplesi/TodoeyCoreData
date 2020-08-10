@@ -14,7 +14,8 @@ class CategoryViewController: UITableViewController {
     var categoryArray = [Category]()
     
     // CoreData
-    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+    //let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+    let context = CoreDataDeclaration.persistentContainer.viewContext
     
     override func viewDidLoad() {
         super.viewDidLoad()
