@@ -42,10 +42,13 @@ class CategoryViewController: UITableViewController {
         let action = UIAlertAction(title: "Add Category", style: .default) { (action) in
             let newCategory = Category(context: self.context) // CoreData
             
-            newCategory.name = textField.text!
-            self.categoryArray.append(newCategory)
-            
-            self.saveCategories()
+            if textField.text!.count > 0 {
+                newCategory.name = textField.text!
+                self.categoryArray.append(newCategory)
+                
+                self.saveCategories()
+            }
+
         }
         alert.addTextField { (alertTextField) in
             alertTextField.placeholder = "Create new category"

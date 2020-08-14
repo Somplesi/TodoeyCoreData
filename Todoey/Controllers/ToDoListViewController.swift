@@ -140,9 +140,11 @@ class ToDoListViewController: UITableViewController {
             newItem.highLighted = false
             newItem.parentCategory = self.selectedCategory
             
-            self.itemArray.append(newItem)
-            
-            self.saveItems()
+            if textField.text!.count > 0 {
+                self.itemArray.append(newItem)
+                
+                self.saveItems()
+            }
         }
         
         alert.addTextField { (alertTextField) in
@@ -155,7 +157,7 @@ class ToDoListViewController: UITableViewController {
         }
         alert.addAction(action)
         present(alert, animated: true, completion: nil)
-                
+        
     }
     @IBAction func editButtonPressed(_ sender: UIBarButtonItem) {
         if tableView.isEditing == true {
@@ -217,7 +219,7 @@ class ToDoListViewController: UITableViewController {
             request.predicate = categoryPredicate
         }
         request.sortDescriptors = [NSSortDescriptor(key: "title", ascending: true)]
-
+        
         do {
             itemArray = try context.fetch(request)
         } catch {
